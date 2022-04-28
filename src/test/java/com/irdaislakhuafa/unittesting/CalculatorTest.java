@@ -72,6 +72,7 @@ public class CalculatorTest {
 
     }
 
+    @Disabled
     @Test
     public void testAbortedException() {
 
@@ -83,6 +84,7 @@ public class CalculatorTest {
     }
 
     @Test
+    @Disabled
     public void testUsingAssumtionsInsteadOfAbortedExceptiob() {
         assumeTrue(System.getenv("PROFILE") != null);
         System.out.println("Ini dijalankan berarti ada enviroment variable PROFILE");
