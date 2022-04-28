@@ -1,11 +1,16 @@
 package com.irdaislakhuafa.unittesting;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.irdaislakhuafa.unittesting.generator.SimpleDisplayNameGenerator;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +18,26 @@ import org.junit.jupiter.api.Test;
 @DisplayNameGeneration(value = SimpleDisplayNameGenerator.class)
 public class CalculatorTest {
     private final Calculator calculator = new Calculator();
+
+    @BeforeAll
+    public static void beforeAll() {
+        System.out.println("Before all");
+    }
+
+    @AfterAll
+    public static void afterAll() {
+        System.out.println("After all");
+    }
+
+    @BeforeEach
+    public void before() {
+        System.out.println("Before each");
+    }
+
+    @AfterEach
+    public void after() {
+        System.out.println("After each");
+    }
 
     @Test
     // @DisplayName("add success test") // use custom generator insted of default
