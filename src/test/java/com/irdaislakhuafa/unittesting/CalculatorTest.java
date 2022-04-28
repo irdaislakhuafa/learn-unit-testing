@@ -3,6 +3,7 @@ package com.irdaislakhuafa.unittesting;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 import com.irdaislakhuafa.unittesting.generator.SimpleDisplayNameGenerator;
 
@@ -79,5 +80,13 @@ public class CalculatorTest {
         if (result == null || !result.equals("DEV")) {
             throw new TestAbortedException("Test dibatalkan");
         }
+    }
+
+    @Test
+    public void testUsingAssumtionsInsteadOfAbortedExceptiob() {
+        assumeTrue(System.getenv("PROFILE") != null);
+        System.out.println("Ini dijalankan berarti ada enviroment variable PROFILE");
+        assumeTrue(System.getenv("PROFILE").equals("DEV"));
+        System.out.println("Ini dijalankan berarti anda DEV");
     }
 }
