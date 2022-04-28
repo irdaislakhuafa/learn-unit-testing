@@ -1,6 +1,6 @@
 package com.irdaislakhuafa.unittesting;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 public class CalculatorTest {
@@ -9,8 +9,22 @@ public class CalculatorTest {
     @Test
     public void testAddSuccess() {
         var result = calculator.add(1, 2);
-        Assertions.assertNotNull(calculator);
-        Assertions.assertNotNull(result);
-        Assertions.assertEquals(result, 3);
+        assertNotNull(calculator);
+        assertNotNull(result);
+        assertEquals(3, result);
+
+    }
+
+    @Test
+    public void testDivideSuccess() {
+        var result = calculator.divide(40, 2);
+        assertNotNull(result);
+    }
+
+    @Test
+    public void testDivideFailed() {
+        assertThrows(RuntimeException.class, () -> {
+            var result = calculator.divide(2, 0);
+        });
     }
 }
